@@ -4,7 +4,7 @@ import log from '../utility/chalk';
 import mailer from '../utility/mail';
 import  bcrypt  from  'bcrypt';
 import jwt from 'jsonwebtoken';
-import product from '../models/product';
+import product from '../models/transaction';
 import mongoose from '../database/database'
 import secret from '../utility/config';
 import {alreadyVerified,mailString,mailErrorString} from '../public/htmlStrings/servehtml';
