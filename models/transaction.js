@@ -1,11 +1,26 @@
 
 import { model, Schema } from 'mongoose'
+import mongoose from '../database/database';
 
-const productSchema = new Schema({
+const transactionSchema = new Schema({
   status: {type:String,default:'pending'},
-  userId:{type:[mongoose.Schema.Types.ObjectId],required:true},
+  userId:{type:mongoose.Schema.Types.ObjectId,required:true},
   transactionAmount: {type:Number,required:true},
-  currencySpent:{type:String},
-  cuurentBought:{type:String}
+  currencySpent:{
+    amount:{
+      type:Number
+    },
+    currenyName:{
+      type:String
+    }
+  },
+  cuurentBought:{
+    amount:{
+      type:Number
+    },
+    currenyName:{
+      type:String
+    }
+  }
 },{timestamps:true})
-export default model('product',productSchema);  
+export default model('transaction',transactionSchema);  

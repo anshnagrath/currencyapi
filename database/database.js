@@ -5,6 +5,6 @@ mongoose.connection.on('connected', function () {
     log('connected to database',true);
 });
 mongoose.connection.on('disconnected', function () {
-    log('Mongoose default connection disconnected',false);
+    log('mongodb connection disconnected',false);
 });
 export default mongoose

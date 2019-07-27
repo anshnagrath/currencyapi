@@ -3,10 +3,10 @@ import cors from 'cors';
 import logger from 'morgan';
 import log from '../utility/chalk'
 import routes from '../routes/routes'
-import mung from 'express-mung'
 import bodyParser from 'body-parser';
 import {connection} from  '../database/database'
 import hbs from 'express-handlebars';
+import io from 'socket.io';
 import path from 'path';
 const app = express();
 app.use(cors());
@@ -22,14 +22,15 @@ app.set('view engine','hbs');
 app.use(routes);
 
 
-app.listen(process.env.PORT || 3000 , (err) => {
+let server = app.listen(process.env.PORT || 3000 , (err) => {
  if(!err) {
      log(`Server started at port  ${ process.env.PORT?process.env.PORT:'3000'}.`,true);
     }else{  
         log(`Error While starting server`,false);
     }
 });
-
+let socket = io(server);
+app.set('socketio',socket);
 
 export default app;
 
